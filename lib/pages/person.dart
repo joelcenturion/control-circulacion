@@ -1,5 +1,6 @@
 import 'package:app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:app/pages/camera.dart';
 
 class Person extends StatefulWidget {
   // const ({ Key? key }) : super(key: key);
@@ -53,11 +54,6 @@ class _PersonState extends State<Person> {
                 height: 150,
                 width: 120,
                 margin: EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                    // border: Border.all(
-                    //     color: Colors.grey,
-                    //     )
-                    ),
                 child: Image.memory(
                   person['photoBytes'],
                   //EN CASO DE QUE NO SE PUEDA CARGAR LA IMAGEN
@@ -229,7 +225,9 @@ class _PersonState extends State<Person> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/camera');
+                      },
                       child: Icon(
                         Icons.account_box_rounded,
                         color: Colors.white,
