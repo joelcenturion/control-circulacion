@@ -4,20 +4,17 @@ import 'package:app/pages/home.dart';
 import 'package:app/pages/person.dart';
 import 'package:app/pages/loading.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
+// import 'package:app/pages/folder.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final cameras = await availableCameras();
-  final firstCamera = cameras.first;
-
   runApp(MaterialApp(
     initialRoute: '/home',
     routes: {
       '/home': (context) => Home(),
       '/person': (context) => Person(),
       '/loading': (context) => Loading(),
-      '/camera': (context) => TakePictureScreen(camera: firstCamera),
+      '/camera': (context) => Camera(),
     },
   ));
 }
@@ -42,11 +39,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             'Autorización',
-            // style: TextStyle(
-            //   fontSize: 18.0,
-            //   fontWeight: FontWeight.bold,
-            //   letterSpacing: 2.0,
-            // ),
             style: GoogleFonts.firaSans(fontSize: 18, letterSpacing: 2.0),
           ),
           ClipRRect(

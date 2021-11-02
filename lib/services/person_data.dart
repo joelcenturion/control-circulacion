@@ -1,7 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
-// import 'dart:typed_data';
 
 class PersonData {
   late String message;
@@ -31,7 +30,6 @@ class PersonData {
         Map data = convert.jsonDecode(response.body);
         print("STATUS CODE: ");
         print(response.statusCode);
-
         //Asignar valores obtenidos a variables
         message = data['response'][0]['message'];
         name = data['response'][0]['name'];
@@ -46,9 +44,10 @@ class PersonData {
         }
         vaccine = data['response'][0]['vaccine'];
         photoString = data['response'][0]['photo'];
-
         //DECODIFICAR IMAGEN
         photoBytes = convert.base64Decode(photoString);
+        //PARA RECONOCIMIENTO FACIAL
+        Global.ciBase64 = photoString;
       } else {
         //SI statuscode != 200 hay algún error
         error = true;
@@ -63,4 +62,6 @@ class PersonData {
 
 class Global {
   static late String ci;
+  static late String ciBase64;
+  static late String cameraBase64;
 }
